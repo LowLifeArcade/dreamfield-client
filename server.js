@@ -2,8 +2,7 @@ const express = require('express');
 const next = require('next');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
-const dev = true;
-// const dev = process.env.NODE_ENV !== 'production';
+const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
@@ -19,9 +18,6 @@ app
           target: 'https://dreamfield-backend.onrender.com',
           // target: 'http://localhost:8000',
           changeOrigin: true,
-          pathRewrite: {
-            "^/api": "" // strip "/api" from the URL
-          },
         })
       );
     }

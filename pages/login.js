@@ -35,7 +35,7 @@ const Login = () => {
         email,
         password,
       });
-
+      
       // dispatch to context for globale state
       dispatch({
         type: "LOGIN",
@@ -59,8 +59,6 @@ const Login = () => {
       //   draggable: true,
       //   progress: undefined,
       // });
-
-      
     } catch (err) {
       // toast.error(err.response.data, {
       //   position: 'bottom-left',
