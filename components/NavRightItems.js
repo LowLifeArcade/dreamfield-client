@@ -15,7 +15,7 @@ const NavRightItems = ({ loggedIn, setCurrent, logOut }) => {
           </div>
         )}
         {!loggedIn && (
-          <p className="rightTitle">Alright signed up?&nbsp;&nbsp;</p>
+          <p className="rightTitle">Already signed up?&nbsp;&nbsp;</p>
         )}
         <SmallNavLoginItem
           location="/"
