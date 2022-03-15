@@ -1,6 +1,6 @@
 import { useEffect, useContext } from 'react';
 import { Context } from '../../context';
-import UserRoute from '../../components/routes/UserRoute';
+import UserRoute from '../../components/routes/userRoute';
 import Button from '../../components/Button';
 import router from 'next/router';
 import DashboardLayout from '../../components/dashboard/DashboardLayout';

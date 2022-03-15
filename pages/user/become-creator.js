@@ -2,9 +2,9 @@ import { useContext, useState } from 'react';
 import { Context } from '../../context';
 import Button from '../../components/Button';
 import axios from 'axios';
-import { toast } from 'react-toastify';
-import UserRoute from '../../components/routes/UserRoute';
-import router from 'next/router';
+// import { toast } from 'react-toastify';
+// import UserRoute from '../../components/routes/UserRoute';
+// import router from 'next/router';
 
 const BecomeCreator = () => {
   const [loading, setLoading] = useState(false);
