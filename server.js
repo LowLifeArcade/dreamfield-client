@@ -27,7 +27,7 @@ app
     });
     server.listen(3000, (err) => {
       if (err) throw err;
-      console.log('> Ready on');
+      console.log('> Ready on https://dreamfield-backend.onrender.com');
     });
   })
   .catch((err) => {
