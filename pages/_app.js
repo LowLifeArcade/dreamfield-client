@@ -4,6 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Provider } from '../context';
 import axios from 'axios';
+import { useEffect } from 'react';
 
 import { ProjectProvider } from '../contexts/SceneMachineProviders';
 import { ViewerProvider } from '../contexts/SceneMachineProviders';
