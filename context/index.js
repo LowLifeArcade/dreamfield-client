@@ -33,7 +33,7 @@ const Provider = ({ children }) => {
       axios.defaults.headers['X-CSRF-Token'] = data.getCsrfToken;
     };
     getCsrfToken();
-  }, [state]);
+  }, []);
 
   useEffect(() => {
     dispatch({

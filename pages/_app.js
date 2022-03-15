@@ -3,6 +3,8 @@ import '../styles/globals.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Provider } from '../context';
+import axios from 'axios';
+
 import { ProjectProvider } from '../contexts/SceneMachineProviders';
 import { ViewerProvider } from '../contexts/SceneMachineProviders';
 import { ProjectContext } from '../contexts/SceneMachineProviders';
@@ -11,7 +13,15 @@ import { useContext } from 'react';
 // TODO: create a context and reducer for the sideMenuItems prop
 
 function MyApp({ Component, pageProps }) {
-  console.log("run _app")
+  useEffect(() => {
+    const getCsrfToken = async () => {
+      const { data } = await axios.get('/api/csrf-token');
+      console.log('CSRF', data);
+      axios.defaults.headers['X-CSRF-Token'] = data.getCsrfToken;
+    };
+    getCsrfToken();
+  }, []);
+  console.log('run _app');
   // const project = useContext(ProjectContext)
   // console.log('PROJECT IN APP', project)
   // const fakeMenuItems = [
@@ -31,46 +41,46 @@ function MyApp({ Component, pageProps }) {
     <Provider>
       <ProjectProvider>
         {/* <ViewerProvider> */}
-          <head lang="en" class="notranslate" translate="no">
-            {/* <script src="https://kit.fontawesome.com/69aa58689a.js" crossorigin="anonymous"></script> */}
-            <meta
-              nameName="google"
-              content="notranslate"
-              lang="en"
-              class="notranslate"
-              translate="no"
-              className="notranslate"
-            />
-            <link
-              rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-            />
-            <style>
-              @import
-              url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
-              @import
-              url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
-              @import
-              url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
-              @import
-              url('https://fonts.googleapis.com/css2?family=Marck+Script&display=swap');
-            </style>
-          </head>
-          <ToastContainer
-            position="bottom-left"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
+        <head lang="en" class="notranslate" translate="no">
+          {/* <script src="https://kit.fontawesome.com/69aa58689a.js" crossorigin="anonymous"></script> */}
+          <meta
+            nameName="google"
+            content="notranslate"
+            lang="en"
+            class="notranslate"
+            translate="no"
+            className="notranslate"
           />
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+          />
+          <style>
+            @import
+            url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+            @import
+            url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+            @import
+            url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+            @import
+            url('https://fonts.googleapis.com/css2?family=Marck+Script&display=swap');
+          </style>
+        </head>
+        <ToastContainer
+          position="bottom-left"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
 
-          <Layout showSideBar={true}>
-            <Component {...pageProps} />
-          </Layout>
+        <Layout showSideBar={true}>
+          <Component {...pageProps} />
+        </Layout>
         {/* </ViewerProvider> */}
       </ProjectProvider>
     </Provider>
