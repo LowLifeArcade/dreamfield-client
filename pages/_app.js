@@ -11,6 +11,7 @@ import { useContext } from 'react';
 // TODO: create a context and reducer for the sideMenuItems prop
 
 function MyApp({ Component, pageProps }) {
+  console.log("run _app")
   // const project = useContext(ProjectContext)
   // console.log('PROJECT IN APP', project)
   // const fakeMenuItems = [
