@@ -15,7 +15,8 @@ app
       server.use(
         '/api',
         createProxyMiddleware({
-          target: 'http://localhost:8000',
+          target: 'https://dreamfield-backend.onrender.com',
+          // target: 'http://localhost:8000',
           changeOrigin: true,
         })
       );
