@@ -18,6 +18,9 @@ app
           target: 'https://dreamfield-backend.onrender.com',
           // target: 'http://localhost:8000',
           changeOrigin: true,
+          pathRewrite: {
+            "^/api": "" // strip "/api" from the URL
+          },
         })
       );
     }
