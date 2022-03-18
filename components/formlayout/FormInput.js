@@ -26,7 +26,7 @@ const FormInput = ({
           className="input-field"
           type={type}
           name={name} // use this field to handle state with [e.target.name]: [e.target.value] in the object
-          autoComplete={'text' && true}
+          // autoComplete={'text' && true}
           placeholder={placeholder}
           disabled={disabled}
         />

@@ -14,14 +14,15 @@ import { useContext } from 'react';
 // TODO: create a context and reducer for the sideMenuItems prop
 
 function MyApp({ Component, pageProps }) {
-  useEffect(() => {
-    const getCsrfToken = async () => {
-      const { data } = await axios.get('/api/csrf-token');
-      console.log('CSRF', data);
-      axios.defaults.headers['X-CSRF-Token'] = data.getCsrfToken;
-    };
-    getCsrfToken();
-  }, []);
+  // useEffect(() => {
+  //   const getCsrfToken = async () => {
+  //     const { data } = await axios.get('https://dreamfield-backend.onrender.com/api/csrf-token');
+  //     console.log('CSRF in _app', data.csrfToken);
+  //     axios.defaults.headers['X-CSRF-Token'] = data.csrfToken;
+  //     // axios.defaults.headers['X-CSRF-Token'] = data.getCsrfToken;
+  //   };
+  //   getCsrfToken();
+  // }, []);
   console.log('run _app');
   // const project = useContext(ProjectContext)
   // console.log('PROJECT IN APP', project)

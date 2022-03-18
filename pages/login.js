@@ -31,10 +31,11 @@ const Login = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      const { data } = await axios.post(`/login`, {
+      const { data } = await axios.post(`https://dreamfield-backend.onrender.com/api/login`, {
         email,
         password,
       });
+      await console.log('DATA', data)
       
       // dispatch to context for globale state
       dispatch({
@@ -69,6 +70,7 @@ const Login = () => {
       //   draggable: true,
       //   progress: undefined,
       // });
+      console.log('ERROR', err)
       setLoading(false);
     }
   };
