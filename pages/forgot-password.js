@@ -16,7 +16,7 @@ const forgotPassword = () => {
   const [newPassword, setNewPassword] = useState('');
   const [repeatNewPassword, setRepeatNewPassword] = useState('');
   const [loading, setLoading] = useState('');
-  const [submitted, setSubmitted] = useState(false)
+  const [submitted, setSubmitted] = useState(false);
 
   // context
   const {
@@ -32,10 +32,13 @@ const forgotPassword = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      const { data } = await axios.post(`/api/forgot-password`, { email });
+      const { data } = await axios.post(
+        `${process.env.NEXT_PUBLIC_API}/forgot-password`,
+        { email }
+      );
       setSuccess(true);
       // toast.warn('Check email for further instructions');
-      setLoading(false)
+      setLoading(false);
     } catch (err) {
       setLoading(false);
       // toast(err.response.data);
@@ -43,27 +46,31 @@ const forgotPassword = () => {
   };
 
   const handleRestPassword = async (e) => {
-      e.preventDefault()
-      try {
-        setLoading(true)
-        const { data}= await axios.post('/api/reset-password', {
-          email, code, newPassword
-        })
-        setEmail('')
-        setCode('')
-        setNewPassword('')
-        setSubmitted(true)
-        // toast.success('Your password has been changed');
-        router.push('/login')
-      } catch (err) {
-        setLoading(false);
+    e.preventDefault();
+    try {
+      setLoading(true);
+      const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API}/reset-password`, {
+        email,
+        code,
+        newPassword,
+      });
+      setEmail('');
+      setCode('');
+      setNewPassword('');
+      setSubmitted(true);
+      // toast.success('Your password has been changed');
+      router.push('/login');
+    } catch (err) {
+      setLoading(false);
       // toast(err.response.data);
-      }
-  }
+    }
+  };
   return (
     <div>
       <div className="container">
-        <form action="submit" onSubmit={success ? handleRestPassword : handleSubmit}>
+        <form
+          action="submit"
+          onSubmit={success ? handleRestPassword : handleSubmit}>
           <CardPlain title="Forgot Password">
             <FormInput
               value={email}
@@ -99,7 +106,16 @@ const forgotPassword = () => {
               </>
             )}
             <div className="btn">
-              <Button disabled={submitted ? true : success ? !newPassword || !code :  !email || loading} buttonName="Submit" />
+              <Button
+                disabled={
+                  submitted
+                    ? true
+                    : success
+                    ? !newPassword || !code
+                    : !email || loading
+                }
+                buttonName="Submit"
+              />
             </div>
           </CardPlain>
         </form>

@@ -55,7 +55,7 @@ const RightPanelBreakdownView = ({
 
   const getCurrentShots = async (sceneId) => {
     try {
-      const shots = await axios.get(`/api/shots/${sceneId}`);
+      const shots = await axios.get(`${process.env.NEXT_PUBLIC_API}/shots/${sceneId}`);
       console.log('SHOTS: ', shots.data);
       setShots(shots.data);
     } catch (error) {
@@ -87,7 +87,7 @@ const RightPanelBreakdownView = ({
   const handleRemoveShot = async (e) => {
     e.preventDefault();
     try {
-      const shot = await axios.delete(`/api/shot/${viewer._id}/${e.target.id}`);
+      const shot = await axios.delete(`${process.env.NEXT_PUBLIC_API}/shot/${viewer._id}/${e.target.id}`);
       console.log('SHOTS: ', shot.data);
       await getCurrentShots(viewer._id);
       // await setShots(shot.data)
@@ -102,7 +102,7 @@ const RightPanelBreakdownView = ({
     // return
     const { _id } = viewer;
     const { forProject } = viewer;
-    const { data } = await axios.delete(`/api/scene/${_id}/${forProject}`);
+    const { data } = await axios.delete(`${process.env.NEXT_PUBLIC_API}/scene/${_id}/${forProject}`);
     // await setViewer(data);
     window.location.reload();
 
@@ -112,7 +112,7 @@ const RightPanelBreakdownView = ({
   const changeItem = async (shotItem, shotId, sceneId) => {
     try {
       const shots = await axios.post(
-        `/api/shot/${shotId}/${viewer._id}`,
+        `${process.env.NEXT_PUBLIC_API}/shot/${shotId}/${viewer._id}`,
         shotItem
       );
       // const { data } = await axios.get(`/api/scene/${viewer._id}`);
@@ -131,8 +131,8 @@ const RightPanelBreakdownView = ({
 
   const changeArrayItem = async (shotArray, shotId) => {
     try {
-      await axios.post(`/api/shot-array/${shotId}/${viewer._id}`, shotArray);
-      const { data } = await axios.get(`/api/scene/${viewer._id}`);
+      await axios.post(`${process.env.NEXT_PUBLIC_API}/shot-array/${shotId}/${viewer._id}`, shotArray);
+      const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API}/scene/${viewer._id}`);
       console.log('SUCCESS CHANGING ARRAY: ', data1);
       await setViewer(data);
 

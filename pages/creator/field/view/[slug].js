@@ -5,8 +5,11 @@ import axios from 'axios';
 import OVSidebarItems from '../../../../components/overview/OVSidebarItem';
 import SceneMachine from '../../../../components/SceneMachine';
 import ReactMarkdown from 'react-markdown';
-import { ProjectProvider, setProjectContext, ProjectContext } from '../../../../contexts/SceneMachineProviders';
-
+import {
+  ProjectProvider,
+  setProjectContext,
+  ProjectContext,
+} from '../../../../contexts/SceneMachineProviders';
 
 // TODO: implement smooth scrolling from link to link on page
 
@@ -19,12 +22,12 @@ const FieldView = () => {
   const [corkImage, setCorkImage] = useState();
   const router = useRouter();
   const { slug } = router.query;
-  const dispatch = useContext(setProjectContext)
+  const dispatch = useContext(setProjectContext);
   const project = useContext(ProjectContext);
 
   useEffect(() => {
-   setField(project)
-   console.log('FIELD: ', field)
+    setField(project);
+    console.log('FIELD: ', field);
   }, [project]);
   // useEffect(() => {
   //   if (project.slug === slug) return
@@ -32,7 +35,7 @@ const FieldView = () => {
   // }, [project]);
 
   // const loadField = async () => {
-  //   const { data } = await axios.get(`/api/field/${slug}`);
+  //   const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API}/field/${slug}`);
   //   setField(data);
   //   dispatch(['LOAD_PROJECT', data])
   // };
@@ -47,32 +50,32 @@ const FieldView = () => {
               <div className="fo-container">
                 <div className="fo-main">
                   <div className="banner">
-                    
                     <div className="banner-items">
-                      
                       {/* <img
                         className="banner-img"
                         src="https://cdnb.artstation.com/p/assets/images/images/020/562/285/large/sonny-sortzen-illustration136.jpg?1568253414"
                         alt=""
                       /> */}
-                      
+
                       <img
                         className="banner-img"
-                        src={field.image?.Location ?? 'https://picsum.photos/id/222/1000/500'}
+                        src={
+                          field.image?.Location ??
+                          'https://picsum.photos/id/222/1000/500'
+                        }
                         alt=""
                       />
                     </div>
                   </div>
 
                   <div className="fo-content">
-                  {/* <pre>
+                    {/* <pre>
                         {JSON.stringify(field, null, 4)}
                       </pre> */}
-                  <h1 className='fo-title' >{field.name}</h1>
+                    <h1 className="fo-title">{field.name}</h1>
                     <div
                       id="corkboard-container"
-                      className="fo-section-container"
-                    >
+                      className="fo-section-container">
                       <div id="corkboard" className="fo-section-cork">
                         <img
                           src="https://cdna.artstation.com/p/assets/images/images/020/562/206/large/sonny-sortzen-illustration63-2.jpg?1568253144"
@@ -143,34 +146,36 @@ const FieldView = () => {
                   </div>
                 </div>
                 {/* set a button up to show and hide this menu OR add it to side menu on left. That's probably a better idea */}
-                {false && <div className="fo-sidebar">
-                  <div className="fo-title-card">
-                    <div className="fo-sidebar-item">Title: {field.name}</div>
-                    <div className="fo-sidebar-item">
-                      Category: {field.category}
+                {false && (
+                  <div className="fo-sidebar">
+                    <div className="fo-title-card">
+                      <div className="fo-sidebar-item">Title: {field.name}</div>
+                      <div className="fo-sidebar-item">
+                        Category: {field.category}
+                      </div>
+                      <div className="fo-sidebar-item">
+                        By: {field.creator.name}
+                      </div>
+                      <div className="fo-sidebar-item">
+                        Synopsis: {field.description}
+                      </div>
                     </div>
-                    <div className="fo-sidebar-item">
-                      By: {field.creator.name}
-                    </div>
-                    <div className="fo-sidebar-item">
-                      Synopsis: {field.description}
-                    </div>
+                    <OVSidebarItems slug="#corkboard" name="Cork Board" />
+                    <OVSidebarItems slug="#about" name="What it's About" />
+                    <OVSidebarItems slug="#ideas" name="Idea Wall" />
+                    <OVSidebarItems slug="#timeline" name="Time Line" />
+                    <OVSidebarItems
+                      slug="#scene-machine-location"
+                      name="Scene Machine"
+                    />
+                    <OVSidebarItems
+                      slug="#concepts"
+                      name="Concepts and Designs"
+                    />
+                    <OVSidebarItems slug="#assets" name="Assets" />
+                    <OVSidebarItems slug="#contributors" name="Contributors" />
                   </div>
-                  <OVSidebarItems slug="#corkboard" name="Cork Board" />
-                  <OVSidebarItems slug="#about" name="What it's About" />
-                  <OVSidebarItems slug="#ideas" name="Idea Wall" />
-                  <OVSidebarItems slug="#timeline" name="Time Line" />
-                  <OVSidebarItems
-                    slug="#scene-machine-location"
-                    name="Scene Machine"
-                  />
-                  <OVSidebarItems
-                    slug="#concepts"
-                    name="Concepts and Designs"
-                  />
-                  <OVSidebarItems slug="#assets" name="Assets" />
-                  <OVSidebarItems slug="#contributors" name="Contributors" />
-                </div>}
+                )}
               </div>
             </div>
           </>

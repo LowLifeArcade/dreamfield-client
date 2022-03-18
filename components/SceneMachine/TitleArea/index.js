@@ -133,9 +133,12 @@ const SceneMachineTitle = () => {
     const [title, setTitle] = useState(field.name);
 
     const changeFieldItem = async (key, value, fieldId) => {
-      const { data } = await axios.put(`/api/field/${fieldId}`, {
-        [key]: value,
-      });
+      const { data } = await axios.put(
+        `${process.env.NEXT_PUBLIC_API}/field/${fieldId}`,
+        {
+          [key]: value,
+        }
+      );
       console.log('FIELD CHANGED: ', data);
       // setField(data);
       dispatch(['LOAD_PROJECT', { data, fieldId }]);
@@ -208,8 +211,8 @@ const SceneMachineTitle = () => {
               border-radius: 3px;
               box-shadow: inset 0 0px 10px rgba(95, 98, 104, 0.4),
                 inset 0 0px 10px rgba(200, 200, 256, 0.1),
-                inset 0 0 10px rgba(200, 180, 0, 0.2), inset 0 0 10px, inset 0 0 3px,
-                inset 0 0 1px, inset 0 0 2px;
+                inset 0 0 10px rgba(200, 180, 0, 0.2), inset 0 0 10px,
+                inset 0 0 3px, inset 0 0 1px, inset 0 0 2px;
               border: solid 1px #333;
             }
           `}</style>

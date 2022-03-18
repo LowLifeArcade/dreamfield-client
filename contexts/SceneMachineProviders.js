@@ -207,7 +207,9 @@ export const ShotsProvider = ({ children }) => {
 
   const getShots = async (sceneId) => {
     try {
-      const shots = await axios.get(`/api/shots/${sceneId}`);
+      const shots = await axios.get(
+        `${process.env.NEXT_PUBLIC_API}/shots/${sceneId}`
+      );
       setShots(shots.data);
     } catch (error) {
       console.log(error);
@@ -248,16 +250,12 @@ export const DetailViewProvider = ({ children }) => {
   );
 };
 
-
 export const ProjectScenesContext = createContext();
 export const SetProjectScenesContext = createContext();
 export const ProjectScenesProvider = ({ children }) => {
-  const [scenes, setScenes] = useStateAndLocalStorage(
-    'project-scenes',
-    []
-  );
+  const [scenes, setScenes] = useStateAndLocalStorage('project-scenes', []);
 
-  console.log('PROJ SCENES: ', scenes )
+  console.log('PROJ SCENES: ', scenes);
   return (
     <>
       <ProjectScenesContext.Provider value={scenes}>
@@ -283,7 +281,9 @@ export const BoardsProvider = ({ children }) => {
    */
   const getBoards = async (sceneId) => {
     console.log('GET BOARDS CONTEXT: ');
-    const { data } = await axios.get(`/api/boards/${sceneId}`);
+    const { data } = await axios.get(
+      `${process.env.NEXT_PUBLIC_API}/boards/${sceneId}`
+    );
     await console.log('BOARDS: ', data);
     await setBoards(data);
   };
@@ -341,7 +341,9 @@ export const MachineStateContext = ({ children }) => {
       case 'FETCH_SCENES': {
         let fetchedScenes = [];
         const fetchScenes = async (store, payload) => {
-          const { data } = await axios.get(`/api/field/${payload}/scenes`);
+          const { data } = await axios.get(
+            `${process.env.NEXT_PUBLIC_API}/field/${payload}/scenes`
+          );
           fetchedScenes = await data;
         };
         fetchScenes();
@@ -481,10 +483,11 @@ export const ProjectContext = createContext();
 export const setProjectContext = createContext();
 
 export const ProjectProvider = ({ children }) => {
-
   const loadField = async (slug) => {
-    const { data } = await axios.get(`/api/field/${slug}`);
-    projectDispatch(['LOAD_PROJECT', {data, slug}])
+    const { data } = await axios.get(
+      `${process.env.NEXT_PUBLIC_API}/field/${slug}`
+    );
+    projectDispatch(['LOAD_PROJECT', { data, slug }]);
     localStorage.setItem('projectslug', JSON.stringify(slug));
   };
 
@@ -493,10 +496,10 @@ export const ProjectProvider = ({ children }) => {
     switch (type) {
       // loads project into state from payload given
       case 'UNLOAD_PROJECT':
-        return {}
+        return {};
       case 'LOAD_PROJECT':
         return { ...payload.data };
-      case 'LOAD_SLUG': 
+      case 'LOAD_SLUG':
         return loadField(payload.slug);
       default:
         state;
@@ -510,7 +513,9 @@ export const ProjectProvider = ({ children }) => {
 
   // only for loading from localStorage when the page is refreshed or loaded
   const loadFieldFromLocalStorage = async (slug) => {
-    const { data } = await axios.get(`/api/field/${slug}`);
+    const { data } = await axios.get(
+      `${process.env.NEXT_PUBLIC_API}/field/${slug}`
+    );
     await console.log('field from provider', data);
     await projectDispatch(['LOAD_PROJECT', { data, slug }]);
   };

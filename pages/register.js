@@ -32,11 +32,14 @@ const Register = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      const { data } = await axios.post(`/api/register`, {
-        name,
-        email,
-        password,
-      });
+      const { data } = await axios.post(
+        `${process.env.NEXT_PUBLIC_API}/register`,
+        {
+          name,
+          email,
+          password,
+        }
+      );
 
       // toast.warning('Registration successfull', {
       //   position: 'bottom-left',
@@ -47,12 +50,12 @@ const Register = () => {
       //   draggable: true,
       //   progress: undefined,
       // });
-      setName('')
-      setEmail('')
-      setPassword('')
-      setConfirmPassword('')
+      setName('');
+      setEmail('');
+      setPassword('');
+      setConfirmPassword('');
       setLoading(false);
-      router.push('/login')
+      router.push('/login');
     } catch (err) {
       // toast.error(err.response.data, {
       //   position: 'bottom-left',
@@ -75,8 +78,7 @@ const Register = () => {
             imgTitle="Sketch To Animate"
             // imgTitle="Dream Fields"
             imgSubTitle="If you come, they will build it."
-            img="https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2734&q=80"
-          >
+            img="https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2734&q=80">
             <FormInput
               value={name}
               onChange={setName}

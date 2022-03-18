@@ -71,7 +71,7 @@ const FieldOverview = () => {
 
   const handleDeleteField = async () => {
     setDeleteField('');
-    const { data } = await axios.delete(`/api/field/${project._id}`);
+    const { data } = await axios.delete(`${process.env.NEXT_PUBLIC_API}/field/${project._id}`);
     const slug = data.slug;
     dispatch(['LOAD_PROJECT', { data, slug }]);
   };

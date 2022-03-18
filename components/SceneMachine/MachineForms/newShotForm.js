@@ -144,7 +144,7 @@ const NewShotForm = () => {
   const handleAddShot = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post(`/api/create-shot`, {
+      const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API}/create-shot`, {
         ...state,
       });
 

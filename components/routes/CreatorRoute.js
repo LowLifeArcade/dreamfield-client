@@ -14,7 +14,7 @@ const CreatorRoute = ({ children }) => {
 
   const fetchCreator = async () => {
     try {
-      const { data } = await axios.get('/api/current-creator');
+      const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API}/current-creator`);
       data.ok && setOk(true);
     } catch (err) {
       console.log(err);

@@ -16,7 +16,7 @@ import { useContext } from 'react';
 function MyApp({ Component, pageProps }) {
   // useEffect(() => {
   //   const getCsrfToken = async () => {
-  //     const { data } = await axios.get('https://dreamfield-backend.onrender.com/api/csrf-token');
+  //     const { data } = await axios.get('https://dreamfield-backend.onrender.com${process.env.NEXT_PUBLIC_API}/csrf-token');
   //     console.log('CSRF in _app', data.csrfToken);
   //     axios.defaults.headers['X-CSRF-Token'] = data.csrfToken;
   //     // axios.defaults.headers['X-CSRF-Token'] = data.getCsrfToken;

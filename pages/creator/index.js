@@ -23,7 +23,7 @@ const CreatorIndex = () => {
   }, []);
 
   const loadFields = async () => {
-    const { data } = await axios.get('/api/creator-fields');
+    const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API}/creator-fields`);
     setFields(data);
   };
 

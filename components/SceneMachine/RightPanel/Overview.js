@@ -85,7 +85,7 @@ const RightPanelOverview = ({ scene, setScene, ref }) => {
     // return
     const { _id } = viewer;
     const { forProject } = viewer;
-    const { data } = await axios.delete(`/api/scene/${_id}/${forProject}`);
+    const { data } = await axios.delete(`${process.env.NEXT_PUBLIC_API}/scene/${_id}/${forProject}`);
     // await setViewer(data);
     setDeleteScene('');
     setProjectScenes(data);
@@ -97,8 +97,8 @@ const RightPanelOverview = ({ scene, setScene, ref }) => {
 
   const changeItem = async (sceneItem) => {
     try {
-      await axios.post(`/api/scene/overview/${viewer._id}`, sceneItem);
-      const { data } = await axios.get(`/api/scene/${viewer._id}`);
+      await axios.post(`${process.env.NEXT_PUBLIC_API}/scene/overview/${viewer._id}`, sceneItem);
+      const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API}/scene/${viewer._id}`);
 
       await setViewer(data);
 
@@ -111,8 +111,8 @@ const RightPanelOverview = ({ scene, setScene, ref }) => {
 
   const changeArrayItem = async (sceneItem) => {
     try {
-      await axios.post(`/api/scene/overview-array/${viewer._id}`, sceneItem);
-      const { data } = await axios.get(`/api/scene/${viewer._id}`);
+      await axios.post(`${process.env.NEXT_PUBLIC_API}/scene/overview-array/${viewer._id}`, sceneItem);
+      const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API}/scene/${viewer._id}`);
       await setViewer(data);
 
       await setLoading(false);

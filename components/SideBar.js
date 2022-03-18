@@ -97,7 +97,7 @@ const SideBar = ({ onLogoClick, showSideMenu }) => {
     dispatch({ type: 'LOGOUT' });
     projectDispatch(['UNLOAD_PROJECT'])
     window.localStorage.removeItem('user');
-    const { data } = await axios.get('/api/logout');
+    const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API}/logout`);
     // toast.warn(data.message);
     // setTimeout(() => {
       router.push('/login');
@@ -121,7 +121,7 @@ const SideBar = ({ onLogoClick, showSideMenu }) => {
   // }, []);
 
   const loadFields = async () => {
-    const { data } = await axios.get('/api/creator-fields');
+    const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API}/creator-fields`);
     setFields(data);
     // loadField(fields[0])
   };

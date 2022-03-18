@@ -7,7 +7,7 @@ import {
   ProjectContext,
   MachineStateStateContext,
 } from '../../../contexts/SceneMachineProviders';
-import {Context} from '../../../context';
+import { Context } from '../../../context';
 
 // import { ProjectContext } from '../../../contexts/SceneMachineProviders';
 
@@ -60,7 +60,7 @@ const VideoAdd = ({ setAddVideo, setDetail, viewer }) => {
       videoData.append('video', file);
 
       const { data } = await axios.post(
-        `/api/scene/video-upload/${viewer._id}`,
+        `${process.env.NEXT_PUBLIC_API}/scene/video-upload/${viewer._id}`,
         videoData,
         {
           onUploadProgress: (e) => {
@@ -86,7 +86,7 @@ const VideoAdd = ({ setAddVideo, setDetail, viewer }) => {
     try {
       setLoading(true);
       const { data } = await axios.post(
-        `/api/scene/video-remove/${project.creator._id}`,
+        `${process.env.NEXT_PUBLIC_API}/scene/video-remove/${project.creator._id}`,
         videoData
       );
       console.log('remove video response data', data);
@@ -94,7 +94,7 @@ const VideoAdd = ({ setAddVideo, setDetail, viewer }) => {
         setVideoData('');
         setVideoName('');
         setLoading(false);
-        return console.log('removed video')
+        return console.log('removed video');
       }
       console.log('error deleting video');
     } catch (err) {
@@ -104,15 +104,18 @@ const VideoAdd = ({ setAddVideo, setDetail, viewer }) => {
   };
 
   const handleSubmit = async () => {
-    const { data } = await axios.post(`/api/scene/video-add/${viewer._id}`, {
-      videoKey: videoData.Key,
-      videoName,
-      videoData,
-      videoShotNumber,
-    });
+    const { data } = await axios.post(
+      `${process.env.NEXT_PUBLIC_API}/scene/video-add/${viewer._id}`,
+      {
+        videoKey: videoData.Key,
+        videoName,
+        videoData,
+        videoShotNumber,
+      }
+    );
     console.log('VIDEO ADDED', data);
     setViewer(data);
-    // await axios.post(`/api/scene/video-add/${viewer._id}`, videoData);
+    // await axios.post(`${process.env.NEXT_PUBLIC_API}/scene/video-add/${viewer._id}`, videoData);
     setAddVideo(false);
   };
 
@@ -255,11 +258,11 @@ const VideoEdit = ({ setAddVideo, setDetail, viewer }) => {
   const [videoData, setVideoData] = useState();
   const [videoThumb, setVideoThumb] = useState();
   const setPreview = useContext(PreviewProviderContext);
-  const preview = useContext(PreviewStateContext)
+  const preview = useContext(PreviewStateContext);
   const setViewer = useContext(SetViewerContext);
   const project = useContext(ProjectContext);
   const state = useContext(MachineStateStateContext);
-  const {state: user} = useContext(Context);
+  const { state: user } = useContext(Context);
   const videoInput = useRef();
   const videoSN = useRef();
   useEffect(() => {
@@ -280,7 +283,7 @@ const VideoEdit = ({ setAddVideo, setDetail, viewer }) => {
   //   type: "video",
   //   video: "https://dreamfields-bucket.s3.us-west-1.amazonaws.com/8xYYKr6CG_pr4JQwosfMq.mp4"
   //   videoData: {}
-  // 
+  //
 
   //   }
   useEffect(() => {
@@ -288,7 +291,7 @@ const VideoEdit = ({ setAddVideo, setDetail, viewer }) => {
     setVideoName(preview.sceneName);
     setVideoShotNumber(preview.shotNumber);
     setVideoData(preview.videoData);
-    console.log('VIDEO STATE ',videoData)
+    console.log('VIDEO STATE ', videoData);
   }, [viewer]);
 
   const handleVideo = async (e) => {
@@ -301,7 +304,7 @@ const VideoEdit = ({ setAddVideo, setDetail, viewer }) => {
       videoData.append('video', file);
 
       const { data } = await axios.post(
-        `/api/scene/video-upload/${viewer._id}`,
+        `${process.env.NEXT_PUBLIC_API}/scene/video-upload/${viewer._id}`,
         videoData,
         {
           onUploadProgress: (e) => {
@@ -326,10 +329,10 @@ const VideoEdit = ({ setAddVideo, setDetail, viewer }) => {
   const handleRemoveVideo = async () => {
     try {
       setLoading(true);
-      // const creator = user 
-      console.log('CREATOR', project.creator)
+      // const creator = user
+      console.log('CREATOR', project.creator);
       const { data } = await axios.post(
-        `/api/scene/video-remove/${project.creator}`,
+        `${process.env.NEXT_PUBLIC_API}/scene/video-remove/${project.creator}`,
         videoData
       );
       console.log('remove video response data', data);
@@ -337,25 +340,28 @@ const VideoEdit = ({ setAddVideo, setDetail, viewer }) => {
         setVideoData('');
         setVideoName('');
         setLoading(false);
-        return console.log('removed video')
+        return console.log('removed video');
       }
       console.log('error deleting video');
     } catch (err) {
       setLoading(false);
-      console.log('error deleting video',err)
+      console.log('error deleting video', err);
     }
   };
 
   const handleSubmit = async () => {
-    const { data } = await axios.post(`/api/scene/video-update/${viewer._id}`, {
-      videoKey: videoData.Key,
-      videoName,
-      videoData,
-      videoShotNumber,
-    });
+    const { data } = await axios.post(
+      `${process.env.NEXT_PUBLIC_API}/scene/video-update/${viewer._id}`,
+      {
+        videoKey: videoData.Key,
+        videoName,
+        videoData,
+        videoShotNumber,
+      }
+    );
     console.log('VIDEO ADDED', data);
     setViewer(data);
-    // await axios.post(`/api/scene/video-add/${viewer._id}`, videoData);
+    // await axios.post(`${process.env.NEXT_PUBLIC_API}/scene/video-add/${viewer._id}`, videoData);
     setAddVideo(false);
   };
 
@@ -384,7 +390,6 @@ const VideoEdit = ({ setAddVideo, setDetail, viewer }) => {
                   placeholder={'Give a name for this video'}
                   // disabled={false}
                 />
-
                 billy
               </>
             ) : (
@@ -490,7 +495,7 @@ const VideoEdit = ({ setAddVideo, setDetail, viewer }) => {
         }
       `}</style>
     </>
-  )
+  );
 };
 
 const VideoView = ({ activeShot, viewer, preview, setPreview, setDetail }) => {
@@ -540,7 +545,6 @@ const VideoView = ({ activeShot, viewer, preview, setPreview, setDetail }) => {
                     (true && (
                       <>
                         <div className="transport-panel">
-                          
                           <img
                             onClick={() =>
                               setPreview({

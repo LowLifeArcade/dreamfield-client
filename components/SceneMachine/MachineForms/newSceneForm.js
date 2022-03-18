@@ -68,7 +68,7 @@ const NewSceneForm = ({setScene}) => {
     Resizer.imageFileResizer(file, 1300, 731, 'JPEG', 100, 0, async (uri) => {
       formData.append('smallImage', uri);
       try {
-        let { data } = await axios.post('/api/board/upload-image', formData);
+        let { data } = await axios.post(`${process.env.NEXT_PUBLIC_API}/board/upload-image`, formData);
         await console.log('SCENE IMAGE UPLOADED', data);
 
         // setImage(data);
@@ -88,7 +88,7 @@ const NewSceneForm = ({setScene}) => {
     if (confirm) {
       try {
         setIsLoading(true);
-        await axios.post('/api/field/remove-image', { image });
+        await axios.post(`${process.env.NEXT_PUBLIC_API}/field/remove-image`, { image });
         setNewBoard({ ...newBoard, boardData: '' });
         setImgPreview('');
         setIsLoading(false);
@@ -110,7 +110,7 @@ const NewSceneForm = ({setScene}) => {
       videoData.append('video', file);
       // console.log('video data', videoData);
       // save progress bar and send video as formdata to backend
-      const { data } = await axios.post('/api/field/video-upload', videoData, {
+      const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API}/field/video-upload`, videoData, {
         onUploadProgress: (e) => {
           setProgress(Math.round((100 * e.loaded) / e.total));
         },
@@ -223,7 +223,7 @@ const NewSceneForm = ({setScene}) => {
   const handleAddScene = async (e) => {
     e.preventDefault();
     try {
-      const {data} = await axios.post(`/api/create-scene`, {
+      const {data} = await axios.post(`${process.env.NEXT_PUBLIC_API}/create-scene`, {
         ...state,
       });
       // redirect user to home page

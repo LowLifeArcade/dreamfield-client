@@ -7,7 +7,7 @@ const StripeCallback = () => {
   const {state:{user}, dispatch} = useContext(Context)
 
   useEffect(() => {
-      user && axios.post('/api/get-account-status').then((res) => {
+      user && axios.post(`${process.env.NEXT_PUBLIC_API}/get-account-status`).then((res) => {
         dispatch({
           type: 'LOGIN',
           payload: res.data,

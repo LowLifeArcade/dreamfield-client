@@ -136,7 +136,7 @@ const SceneMachineRightPanel = ({setScene, scene}) => {
   
 
   const getScenes = async () => {
-    const { data } = await axios.get(`/api/field/${project._id}/scenes`);
+    const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API}/field/${project._id}/scenes`);
     const scenes = await [...data];
     setScenes(scenes);
   };

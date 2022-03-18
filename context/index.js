@@ -28,7 +28,9 @@ const Provider = ({ children }) => {
 
   useEffect(() => {
     const getCsrfToken = async () => {
-      const { data } = await axios.get('https://dreamfield-backend.onrender.com/api/csrf-token');
+      const { data } = await axios.get(
+        'https://dreamfield-backend.onrender.com${process.env.NEXT_PUBLIC_API}/csrf-token'
+      );
       console.log('CSRF in context', data);
       axios.defaults.headers['X-CSRF-Token'] = data.csrfToken;
       // axios.defaults.headers['X-CSRF-Token'] = data.getCsrfToken;
@@ -54,7 +56,7 @@ const Provider = ({ children }) => {
       if (res.status === 401 && res.config && !res.config.__isRetryRequest) {
         return new Promise((resolve, reject) => {
           axios
-            .get('/api/logout')
+            .get(`${process.env.NEXT_PUBLIC_API}/logout`)
             .then((data) => {
               //
               console.log('/501 error > logout');

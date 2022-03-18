@@ -66,7 +66,7 @@ const NewBoardForm = () => {
 
   const getCurrentShots = async () => {
     try {
-      const shots = await axios.get(`/api/shots/${viewer._id}`);
+      const shots = await axios.get(`${process.env.NEXT_PUBLIC_API}/shots/${viewer._id}`);
       console.log('SHOTS: ', shots.data);
       setShots(shots.data);
     } catch (error) {
@@ -84,7 +84,7 @@ const NewBoardForm = () => {
 
   const handleSubmit = async (e) => {
     try {
-      const { data } = await axios.post(`/api/create-board`, {
+      const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API}/create-board`, {
         newBoard,
         image,
       });
@@ -129,7 +129,7 @@ const NewBoardForm = () => {
     Resizer.imageFileResizer(file, 2000, 1200, 'JPEG', 100, 0, async (uri) => {
       formData.append('smallImage', uri);
       try {
-        let { data } = await axios.post('/api/board/upload-image', formData);
+        let { data } = await axios.post(`${process.env.NEXT_PUBLIC_API}/board/upload-image`, formData);
         await console.log('IMAGE UPLOADED', data);
 
         setImage(data);
@@ -148,7 +148,7 @@ const NewBoardForm = () => {
     if (confirm) {
       try {
         setIsLoading(true);
-        await axios.post('/api/field/remove-image', { image });
+        await axios.post(`${process.env.NEXT_PUBLIC_API}/field/remove-image`, { image });
         setNewBoard({ ...newBoard, boardData: '' });
         setImgPreview('');
         setIsLoading(false);

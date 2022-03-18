@@ -145,7 +145,7 @@ const CreateField = () => {
     // resize image
     Resizer.imageFileResizer(file, 2020, 1000, 'JPEG', 100, 0, async (uri) => {
       try {
-        let { data } = await axios.post('/api/field/upload-image', {
+        let { data } = await axios.post(`${process.env.NEXT_PUBLIC_API}/field/upload-image`, {
           image: uri,
         });
         console.log('IMAGE UPLOADED', data);
@@ -167,7 +167,7 @@ const CreateField = () => {
     if (confirm) {
       try {
         setValues({ ...values, loading: true });
-        await axios.post('/api/field/remove-image', { image });
+        await axios.post(`${process.env.NEXT_PUBLIC_API}/field/remove-image`, { image });
         setImage({});
         setPreview('');
         setValues({ ...values, loading: false });
@@ -188,7 +188,7 @@ const CreateField = () => {
     scriptData.append('script', file);
 
     try {
-      let { data } = await axios.post('/api/field/upload-script', scriptData, {
+      let { data } = await axios.post(`${process.env.NEXT_PUBLIC_API}/field/upload-script`, scriptData, {
         onUploadProgress: (e) => {
           setProgress(Math.round((100 * e.loaded) / e.total));
         },
@@ -220,7 +220,7 @@ const CreateField = () => {
       const videoData = new FormData();
       videoData.append('video', file);
 
-      const { data } = await axios.post('/api/field/video-upload', videoData, {
+      const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API}/field/video-upload`, videoData, {
         onUploadProgress: (e) => {
           setProgress(Math.round((100 * e.loaded) / e.total));
         },
@@ -234,7 +234,7 @@ const CreateField = () => {
     if (confirm) {
       try {
         // TODO: set loading true
-        await axios.post('/api/field/remove-script', { image });
+        await axios.post(`${process.env.NEXT_PUBLIC_API}/field/remove-script`, { image });
         setImage({});
         setPreview('');
         setValues({ ...values, loading: false });
@@ -250,7 +250,7 @@ const CreateField = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post('/api/field', {
+      const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API}/field`, {
         ...values,
         image,
       });

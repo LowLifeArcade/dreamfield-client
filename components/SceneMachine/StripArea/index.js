@@ -12,7 +12,7 @@ import {
   ControlSetPanelButtonsContext,
   ProjectScenesContext,
   SetProjectScenesContext,
-  PreviewStateContext
+  PreviewStateContext,
 } from '../../../contexts/SceneMachineProviders';
 import StripStyle from './StripAreaStyle';
 import { initialViewerState } from '../../../initialStates';
@@ -85,7 +85,7 @@ const App = () => {
 
 const SceneMachineStripArea = ({ scene }) => {
   const setPreview = useContext(PreviewProviderContext);
-  const preview = useContext(PreviewStateContext)
+  const preview = useContext(PreviewStateContext);
   const [scenes, setScenes] = useState(['']);
   const viewer = useContext(ViewerContext);
   const setViewer = useContext(SetViewerContext);
@@ -98,7 +98,7 @@ const SceneMachineStripArea = ({ scene }) => {
   const setDetail = useContext(SetDetailViewContext);
   const projectScenes = useContext(ProjectScenesContext);
   const setProjectScenes = useContext(SetProjectScenesContext);
-  const [fullScenes, setFullScenes] = useState()
+  const [fullScenes, setFullScenes] = useState();
 
   useEffect(() => {
     if (projectScenes.length === []) return;
@@ -160,10 +160,12 @@ const SceneMachineStripArea = ({ scene }) => {
      */
     const handleLoadScenes = async () => {
       if (!project._id) return;
-      const { data } = await axios.get(`/api/field/${project._id}/scenes`);
+      const { data } = await axios.get(
+        `${process.env.NEXT_PUBLIC_API}/field/${project._id}/scenes`
+      );
       const scenes = await [...data];
       // console.log('SCENES IN STRIP AREA', scenes);
-      setFullScenes(scenes)
+      setFullScenes(scenes);
 
       const stripScenes = await scenes.map((scene) => ({
         _id: scene._id,
@@ -184,7 +186,9 @@ const SceneMachineStripArea = ({ scene }) => {
   // })
 
   const loadViewerScene = async (id) => {
-    const { data } = await axios.get(`/api/scene/${id}`);
+    const { data } = await axios.get(
+      `${process.env.NEXT_PUBLIC_API}/scene/${id}`
+    );
     await setViewer(data);
     await setPreview({
       sceneName: data.sceneName,
@@ -237,15 +241,18 @@ const SceneMachineStripArea = ({ scene }) => {
     // e.preventDefault()
     e.dataTransfer.setData('index', i);
     // console.log('DRAG: ', i);
-  }
+  };
 
   const updateSceneOrder = async (e, i) => {
     e.preventDefault();
     const sceneOrder = scenes.map((scene) => scene._id);
     // console.log('SCENE ORDER: ', sceneOrder);
-    await axios.put(`/api/field/${project._id}/scenes`, { sceneOrder });
+    await axios.put(
+      `${process.env.NEXT_PUBLIC_API}/field/${project._id}/scenes`,
+      { sceneOrder }
+    );
     // console.log('SCENE ORDER: ', sceneOrder);
-  }
+  };
 
   const handleDrop = async (e, i) => {
     // e.preventDefault()
@@ -260,7 +267,7 @@ const SceneMachineStripArea = ({ scene }) => {
     setScenes(newScenes);
     // updateSceneOrder(newScenes);
     // const id = e.dataTransfer.getData('id');
-    // const { data } = await axios.get(`/api/scene/${id}`);
+    // const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API}/scene/${id}`);
     // const scene = await data;
     // const stripScene = {
     //   _id: scene._id,
@@ -271,13 +278,16 @@ const SceneMachineStripArea = ({ scene }) => {
     // setPreview({ ...preview, ...stripScene });
     // handleViewer(stripScene);
     // console.log('STRIP SCENE: ', scene);
-  }
+  };
 
   return (
     <>
       <StripStyle />
-      <div className="section-strip-container" >
-        <div id="act1" onDragOver={e => e.preventDefault()} className="scenes-section-strip">
+      <div className="section-strip-container">
+        <div
+          id="act1"
+          onDragOver={(e) => e.preventDefault()}
+          className="scenes-section-strip">
           {
             <>
               {buttons.display === machineView.view4.name &&
@@ -323,14 +333,18 @@ const SceneMachineStripArea = ({ scene }) => {
                     </div>
                   </>
                 ))}
-              {project.name && <div className="scene-strip">
-                <div onClick={handleNewScene} className="empty-strip-area"></div>
-                <div onClick={handleNewScene} className="scene-strip-add">
-                  <div>
-                    <i class="fas fa-plus "></i>
+              {project.name && (
+                <div className="scene-strip">
+                  <div
+                    onClick={handleNewScene}
+                    className="empty-strip-area"></div>
+                  <div onClick={handleNewScene} className="scene-strip-add">
+                    <div>
+                      <i class="fas fa-plus "></i>
+                    </div>
                   </div>
                 </div>
-              </div>}
+              )}
             </>
           }
         </div>

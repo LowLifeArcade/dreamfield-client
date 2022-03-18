@@ -14,7 +14,7 @@ const BecomeCreator = () => {
 
   const becomeCreator = () => {
       setLoading(true)
-      axios.post('/api/make-creator')
+      axios.post(`${process.env.NEXT_PUBLIC_API}/make-creator`)
       .then((res) => {
         console.log(res)
         window.location.href = res.data

@@ -29,9 +29,10 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('ENV ',process.env.NEXT_PUBLIC_API)
     try {
       setLoading(true);
-      const { data } = await axios.post(`https://dreamfield-backend.onrender.com/api/login`, {
+      const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API}/login`, {
         email,
         password,
       });
