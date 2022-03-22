@@ -85,7 +85,7 @@ const SideBar = ({ onLogoClick, showSideMenu }) => {
   // const [favorites, setFavorites] = useState(initialFavorites);
   const [fields, setFields] = useState([]);
   const project = useContext(ProjectContext);
-  const projectDispatch = useContext(setProjectContext)
+  const projectDispatch = useContext(setProjectContext);
   const { state, dispatch } = useContext(Context);
   const { user: loggedIn } = state;
 
@@ -95,12 +95,12 @@ const SideBar = ({ onLogoClick, showSideMenu }) => {
 
   const logOut = async () => {
     dispatch({ type: 'LOGOUT' });
-    projectDispatch(['UNLOAD_PROJECT'])
+    projectDispatch(['UNLOAD_PROJECT']);
     window.localStorage.removeItem('user');
     const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API}/logout`);
     // toast.warn(data.message);
     // setTimeout(() => {
-      router.push('/login');
+    router.push('/login');
     // }, 1000); // instead of const router = useRouter()
   };
 
@@ -121,9 +121,17 @@ const SideBar = ({ onLogoClick, showSideMenu }) => {
   // }, []);
 
   const loadFields = async () => {
-    const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API}/creator-fields`);
-    setFields(data);
-    // loadField(fields[0])
+    try {
+      const { data } = await axios.get(
+        `${process.env.NEXT_PUBLIC_API}/creator-fields`
+      );
+      console.log('FIELDS LOADED IN SIDEBAR', data);
+      setFields(data);
+      // loadField(fields[0])
+    } catch (error) {
+      console.log('ERROR > FIELDS LOADED IN SIDEBAR', error);
+      
+    }
   };
 
   return (

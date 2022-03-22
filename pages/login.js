@@ -36,7 +36,7 @@ const Login = () => {
         email,
         password,
       });
-      await console.log('DATA', data)
+      await console.log('LOGIN DATA', data)
       
       // dispatch to context for globale state
       dispatch({
@@ -71,7 +71,7 @@ const Login = () => {
       //   draggable: true,
       //   progress: undefined,
       // });
-      console.log('ERROR', err)
+      console.log('LOGIN ERROR', err)
       setLoading(false);
     }
   };

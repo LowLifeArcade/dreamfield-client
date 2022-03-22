@@ -242,7 +242,6 @@ const SceneMachineRightPanel = ({setScene, scene}) => {
               setDetail={setDetail}
               viewer={viewer}
               activeShot={activeShot}
-              viewer={viewer}
               setPreview={setPreview}
               preview={preview}
             />

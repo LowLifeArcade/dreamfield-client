@@ -21,17 +21,25 @@ const CreatorIndex = () => {
   useEffect(() => {
     loadFields();
   }, []);
+  console.log('FIELDS LOADED', fields);
 
   const loadFields = async () => {
-    const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API}/creator-fields`);
-    setFields(data);
+    try {
+      const { data } = await axios.get(
+        `${process.env.NEXT_PUBLIC_API}/creator-fields`
+      );
+      console.log('FIELDS LOADED IN PAGES/CREATOR ', data);
+      setFields(data);
+    } catch (error) {
+      console.log('ERROR > FIELDS LOADED IN PAGES/CREATOR ', data);
+    }
   };
 
   return (
     <CreatorRoute>
       <DashboardLayout title="Creator Dashboard">
-          <div className="page">
-        <FormCard>
+        <div className="page">
+          <FormCard>
             <h1>Welcome back {user && user.name}</h1>
             <Button
               color="#276a72"
@@ -48,11 +56,11 @@ const CreatorIndex = () => {
                         <div className="col">
                           <Link
                             href={`/creator/field/view/${field.slug}`}
-                            className="pointer"
-                          >
+                            className="pointer">
                             <h2>
-
-                            <a className="h5 text-primary pointer">{field.name}</a>
+                              <a className="h5 text-primary pointer">
+                                {field.name}
+                              </a>
                             </h2>
                           </Link>
                           <button>Delete {field.name}</button>
@@ -93,7 +101,7 @@ const CreatorIndex = () => {
                   </button> */}
                 </>
               ))}
-              {/* <div className="media-json">
+            {/* <div className="media-json">
 
             <pre>{JSON.stringify(fields, null, 4)}</pre>
               </div> */}
@@ -126,8 +134,8 @@ const CreatorIndex = () => {
                 line-height: 2rem;
               }
             `}</style>
-        </FormCard>
-          </div>
+          </FormCard>
+        </div>
       </DashboardLayout>
     </CreatorRoute>
   );

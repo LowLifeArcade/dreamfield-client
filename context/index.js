@@ -45,21 +45,21 @@ const Provider = ({ children }) => {
     });
   }, []);
 
+  // I believe this runs as a middlware between a response and error. So if I get an error logging in it logs me out.
   axios.interceptors.response.use(
     (response) => {
       // status code in range of 2xx cause this function to trigger
       return response;
     },
     (error) => {
-      // status codes out of range 2xx ttigger
+      // status codes out of range 2xx trigger
       let res = error.response;
       if (res.status === 401 && res.config && !res.config.__isRetryRequest) {
         return new Promise((resolve, reject) => {
           axios
             .get(`${process.env.NEXT_PUBLIC_API}/logout`)
             .then((data) => {
-              //
-              console.log('/501 error > logout');
+              console.log('/501 error > logout > data', error);
               dispatch({ type: 'LOGOUT' });
               window.localStorage.removeItem('user');
               router.push('/login');
