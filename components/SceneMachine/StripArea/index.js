@@ -340,7 +340,7 @@ const SceneMachineStripArea = ({ scene }) => {
                     className="empty-strip-area"></div>
                   <div onClick={handleNewScene} className="scene-strip-add">
                     <div>
-                      <i class="fas fa-plus "></i>
+                      <i className="fas fa-plus "></i>
                     </div>
                   </div>
                 </div>

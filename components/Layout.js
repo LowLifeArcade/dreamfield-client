@@ -40,30 +40,42 @@ const Layout = (props) => {
   const project = useContext(ProjectContext);
   console.log('PROJECT IN APP', project);
   const fakeMenuItems = [
-    { slug: '/', icon: <i class="far fa-newspaper"></i>, name: 'Classifieds' },
+    {
+      slug: '/',
+      icon: <i className="far fa-newspaper"></i>,
+      name: 'Classifieds',
+    },
     {
       slug: '/edit/creator',
-      icon: <i class="far fa-edit"></i>,
+      icon: <i className="far fa-edit"></i>,
       name: 'Scene Machine',
     },
-    { slug: '/creator', icon: <i class="fas fa-cog"></i>, name: 'Settings' },
+    {
+      slug: '/creator',
+      icon: <i className="fas fa-cog"></i>,
+      name: 'Settings',
+    },
     ,
   ];
   const fakeMenuItems2 = [
     {
       slug: '/projects',
-      icon: <i class="fas fa-photo-video"></i>,
+      icon: <i className="fas fa-photo-video"></i>,
       name: 'Library',
     },
     {
       slug: `/creator/field/view/${project?.slug}`,
-      icon: <i class="fas fa-phone-square-alt"></i>,
+      icon: <i className="fas fa-phone-square-alt"></i>,
       name: 'Field',
     },
-    { slug: '/projects/stats', icon: <i class="fas fa-poll"></i>, name: 'Stats' },
+    {
+      slug: '/projects/stats',
+      icon: <i className="fas fa-poll"></i>,
+      name: 'Stats',
+    },
     {
       slug: '/creator/field/create',
-      icon: <i class="far fa-plus-square"></i>,
+      icon: <i className="far fa-plus-square"></i>,
       name: 'Create New',
     },
   ];

@@ -10,7 +10,7 @@ const SideBarItem = () => {
             <div>
               <div className="sideBarAdd">
                 <span>
-                  <i class="fas fa-plus fa-2x"></i>
+                  <i className="fas fa-plus fa-2x"></i>
                 </span>
               </div>
             </div>

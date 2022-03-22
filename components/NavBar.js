@@ -27,7 +27,7 @@ const NavBar = ({ onLogoClick, showSideMenu }) => {
   return (
     <>
       <head className="notranslate">
-        <meta http-equiv="content-language" content="en" />
+        <meta httpEquiv="content-language" content="en" />
         <meta name="google" content="notranslate" />
       </head>
       

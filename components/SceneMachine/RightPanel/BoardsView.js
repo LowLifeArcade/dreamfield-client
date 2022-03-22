@@ -59,7 +59,7 @@ const RightPanelBoardsView = ({
     console.log('add board');
     setPreview({
       ...preview,
-      sceneName: 'new board'
+      sceneName: 'new board',
     });
     setDetail(detailView.addBoard);
   };
@@ -97,13 +97,13 @@ const RightPanelBoardsView = ({
         // <div className="transport-panels">
         // <section className="transport-panel-add">
         //   <div onClick={handleAddBoard}>
-        //     <i class="fas fa-plus "></i>
+        //     <i className="fas fa-plus "></i>
         //   </div>
         // </section>
         //   </div>
       }
       {boards.length > 0 && (
-      // {viewer.shotList?.length > 0 && (
+        // {viewer.shotList?.length > 0 && (
         <>
           {' '}
           <div className="board-titles">Boards</div>
@@ -148,7 +148,7 @@ const RightPanelBoardsView = ({
 
             <section className="transport-panel-add">
               <div onClick={handleAddBoard}>
-                <i class="fas fa-plus "></i>
+                <i className="fas fa-plus "></i>
               </div>
             </section>
           </div>{' '}
@@ -211,7 +211,7 @@ const RightPanelBoardsView = ({
 
         <section className="transport-panel-add">
           <div onClick={() => setPreview(initPreviewState)}>
-            <i class="fas fa-plus "></i>
+            <i className="fas fa-plus "></i>
           </div>
         </section>
       </div> */}
@@ -272,7 +272,7 @@ const RightPanelBoardsView = ({
 
         <section className="transport-panel-add">
           <div onClick={() => setPreview(initPreviewState)}>
-            <i class="fas fa-plus "></i>
+            <i className="fas fa-plus "></i>
           </div>
         </section>
       </div> */}
@@ -331,7 +331,7 @@ const RightPanelBoardsView = ({
 
         <section className="transport-panel-add">
           <div onClick={() => setPreview(initPreviewState)}>
-            <i class="fas fa-plus "></i>
+            <i className="fas fa-plus "></i>
           </div>
         </section>
       </div> */}

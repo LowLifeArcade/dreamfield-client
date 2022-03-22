@@ -39,25 +39,25 @@ const ControlPanelContextualMenu = () => {
           {false && ( // make boolean that reads project file to reverse changes
             <>
               <div className="btn-mini">
-                <i class="fas fa-redo-alt"></i>
+                <i className="fas fa-redo-alt"></i>
               </div>
               <div className="btn-mini">
-                <i class="fas fa-undo-alt"></i>
+                <i className="fas fa-undo-alt"></i>
               </div>
             </>
           )}
 
           <div className="btn-mini">
-            <i class="fas fa-photo-video"></i>
+            <i className="fas fa-photo-video"></i>
           </div>
           <div className="btn-mini">
-            <i class="fas fa-file-export"></i>
+            <i className="fas fa-file-export"></i>
           </div>
           <div className="btn-mini">
-            <i class="fas fa-info-circle"></i>
+            <i className="fas fa-info-circle"></i>
           </div>
           <div className="btn-mini">
-            <i class="far fa-save"></i>
+            <i className="far fa-save"></i>
           </div>
         </>
       )}
@@ -67,28 +67,28 @@ const ControlPanelContextualMenu = () => {
           {false && ( // make boolean that reads project file to reverse changes
             <>
               <div className="btn-mini">
-                <i class="fas fa-redo-alt"></i>
+                <i className="fas fa-redo-alt"></i>
               </div>
               <div className="btn-mini">
-                <i class="fas fa-undo-alt"></i>
+                <i className="fas fa-undo-alt"></i>
               </div>
             </>
           )}
 
           <div className="btn-mini">
-            <i class="fas fa-pager"></i>
+            <i className="fas fa-pager"></i>
           </div>
           {/* <div className="btn-mini">
-            <i class="fas fa-photo-video"></i>
+            <i className="fas fa-photo-video"></i>
           </div> */}
           <div className="btn-mini">
-            <i class="fas fa-file-export"></i>
+            <i className="fas fa-file-export"></i>
           </div>
           <div className="btn-mini">
-            <i class="fas fa-info-circle"></i>
+            <i className="fas fa-info-circle"></i>
           </div>
           <div className="btn-mini">
-            <i class="far fa-save"></i>
+            <i className="far fa-save"></i>
           </div>
         </>
       )}
@@ -98,28 +98,28 @@ const ControlPanelContextualMenu = () => {
           {false && ( // make boolean that reads project file to reverse changes
             <>
               <div className="btn-mini">
-                <i class="fas fa-redo-alt"></i>
+                <i className="fas fa-redo-alt"></i>
               </div>
               <div className="btn-mini">
-                <i class="fas fa-undo-alt"></i>
+                <i className="fas fa-undo-alt"></i>
               </div>
             </>
           )}
 
           {/* <div className="btn-mini">
-            <i class="fas fa-pager"></i>
+            <i className="fas fa-pager"></i>
           </div> */}
           {/* <div className="btn-mini">
-            <i class="fas fa-photo-video"></i>
+            <i className="fas fa-photo-video"></i>
           </div> */}
           {/* <div className="btn-mini">
-            <i class="fas fa-file-export"></i>
+            <i className="fas fa-file-export"></i>
           </div> */}
           <div className="btn-mini">
-            <i class="fas fa-info-circle"></i>
+            <i className="fas fa-info-circle"></i>
           </div>
           <div className="btn-mini">
-            <i class="far fa-save"></i>
+            <i className="far fa-save"></i>
           </div>
         </>
       )}
@@ -129,25 +129,25 @@ const ControlPanelContextualMenu = () => {
           {state.machineState == 'edit' && ( // make boolean that reads project file to reverse changes
             <>
               <div className="btn-mini">
-                <i class="fas fa-redo-alt"></i>
+                <i className="fas fa-redo-alt"></i>
               </div>
               <div className="btn-mini">
-                <i class="fas fa-undo-alt"></i>
+                <i className="fas fa-undo-alt"></i>
               </div>
             </>
           )}
 
           <div className="btn-mini">
-            <i class="fas fa-photo-video"></i>
+            <i className="fas fa-photo-video"></i>
           </div>
           <div className="btn-mini">
-            <i class="fas fa-file-export"></i>
+            <i className="fas fa-file-export"></i>
           </div>
           <div className="btn-mini">
-            <i class="fas fa-info-circle"></i>
+            <i className="fas fa-info-circle"></i>
           </div>
           <div className="btn-mini">
-            <i class="far fa-save"></i>
+            <i className="far fa-save"></i>
           </div>
         </>
       )}

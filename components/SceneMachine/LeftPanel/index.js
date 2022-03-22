@@ -168,35 +168,34 @@ const SceneMachineLeftPanel = () => {
             )}
 
             {/* <div className="expand">
-              <i class="fas fa-expand"></i>
+              <i className="fas fa-expand"></i>
             </div> */}
 
             {/* <div className="preview-state">{state.previewState}</div> */}
           </div>
         </div>
         <div className="transport-title-container">
-
-        <div className="transport-title">
-          <div>
-            <p>Panel:</p> {preview.panel || '0'}
+          <div className="transport-title">
+            <div>
+              <p>Panel:</p> {preview.panel || '0'}
+            </div>
+            <div>
+              <p>Scene:</p> {preview.sceneName || '0'}
+            </div>
+            <div>
+              <p>Shot:</p> {preview.shotNumber || '0'}
+            </div>
           </div>
-          <div>
-            <p>Scene:</p> {preview.sceneName || '0'}
-          </div>
-          <div>
-            <p>Shot:</p> {preview.shotNumber || '0'}
-          </div>
-        </div>
         </div>
         <div className="transport-viewer-controls">
           <button onClick={() => dispatch('BACKWARD')}>
-            <i class="fas fa-chevron-left"></i>
+            <i className="fas fa-chevron-left"></i>
           </button>
           <button onClick={() => dispatch('STOP')}>Stop</button>
           <button onClick={() => dispatch('PLAY')}>Play</button>
           <button onClick={() => dispatch('PAUSE')}>Pause</button>
           <button onClick={() => dispatch('FORWARD')}>
-            <i class="fas fa-chevron-right"></i>
+            <i className="fas fa-chevron-right"></i>
           </button>
         </div>
       </div>

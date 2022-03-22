@@ -25,26 +25,26 @@ function MyApp({ Component, pageProps }) {
   //   getCsrfToken();
   // }, []);
   console.log('run _app');
-  const project = useContext(ProjectContext)
-  console.log('PROJECT IN APP', project)
+  const project = useContext(ProjectContext);
+  console.log('PROJECT IN APP', project);
   // const fakeMenuItems = [
-  //   { slug: '/', icon: <i class="fas fa-home"></i>, name: 'Home' },
-  //   { slug: '/edit/creator', icon: <i class="far fa-edit"></i>, name: 'Scene Machine' },
-  //   { slug: '/creator', icon: <i class="fas fa-cog"></i>, name: 'Settings' },
+  //   { slug: '/', icon: <i className="fas fa-home"></i>, name: 'Home' },
+  //   { slug: '/edit/creator', icon: <i className="far fa-edit"></i>, name: 'Scene Machine' },
+  //   { slug: '/creator', icon: <i className="fas fa-cog"></i>, name: 'Settings' },
   //   ,
   // ];
   // const fakeMenuItems2 = [
-  //   { slug: '/projects', icon: <i class="fas fa-photo-video"></i>, name: 'Library' },
-  //   { slug: `/creator/field/view/${project?.slug}`, icon: <i class="fas fa-phone-square-alt"></i>, name: 'Connect' },
-  //   { slug: '/creator', icon: <i class="fas fa-poll"></i>, name: 'Stats' },
-  //   { slug: '/creator/field/create', icon: <i class="far fa-plus-square"></i>, name: 'Create New' }
+  //   { slug: '/projects', icon: <i className="fas fa-photo-video"></i>, name: 'Library' },
+  //   { slug: `/creator/field/view/${project?.slug}`, icon: <i className="fas fa-phone-square-alt"></i>, name: 'Connect' },
+  //   { slug: '/creator', icon: <i className="fas fa-poll"></i>, name: 'Stats' },
+  //   { slug: '/creator/field/create', icon: <i className="far fa-plus-square"></i>, name: 'Create New' }
   // ];
 
   return (
     <Provider>
       <ProjectProvider>
         {/* <ViewerProvider> */}
-        <head lang="en" class="notranslate" translate="no">
+        <head lang="en" className="notranslate" translate="no">
           {/* <script src="https://kit.fontawesome.com/69aa58689a.js" crossorigin="anonymous"></script> */}
           <meta
             nameName="google"

@@ -239,10 +239,10 @@ const SceneMachineTitle = () => {
           {false && (
             <>
               <div className="btn-mini">
-                <i class="fas fa-redo-alt"></i>
+                <i className="fas fa-redo-alt"></i>
               </div>
               <div className="btn-mini">
-                <i class="fas fa-undo-alt"></i>
+                <i className="fas fa-undo-alt"></i>
               </div>
             </>
           )}
@@ -252,11 +252,11 @@ const SceneMachineTitle = () => {
                 <i className="fas fa-trash-alt"></i>
               </div>
               <div className="btn-mini">
-                <i class="fas fa-film"></i>
+                <i className="fas fa-film"></i>
               </div>
               {true && (
                 <div className="btn-mini">
-                  <i class="far fa-share-square"></i>
+                  <i className="far fa-share-square"></i>
                 </div>
               )}
             </>
@@ -270,11 +270,11 @@ const SceneMachineTitle = () => {
                 <i className="fas fa-cut"></i>
               </div>
               <div className="btn-mini">
-                <i class="far fa-clone"></i>
+                <i className="far fa-clone"></i>
               </div>
               {true && (
                 <div className="btn-mini">
-                  <i class="far fa-share-square"></i>
+                  <i className="far fa-share-square"></i>
                 </div>
               )}
             </>

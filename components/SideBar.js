@@ -130,7 +130,6 @@ const SideBar = ({ onLogoClick, showSideMenu }) => {
       // loadField(fields[0])
     } catch (error) {
       console.log('ERROR > FIELDS LOADED IN SIDEBAR', error);
-      
     }
   };
 
@@ -145,7 +144,7 @@ const SideBar = ({ onLogoClick, showSideMenu }) => {
               {!showSideMenu && (
                 <i className="far fa-caret-square-left fa-2x icons"></i>
               )}
-              {/* <i class="far fa-caret-square-right fa-2x"></i>{' '} */}
+              {/* <i className="far fa-caret-square-right fa-2x"></i>{' '} */}
             </div>
           </span>
           <div className="topContent">
@@ -173,14 +172,14 @@ const SideBar = ({ onLogoClick, showSideMenu }) => {
         <div className="bottomContent">
           <div className="bottom-item">
             <span onClick={() => router.push('/edit/creator')}>
-              <i class="fas fa-toolbox fa-2x"></i>
-              {/* <i class="fas fa-palette fa-2x"></i> */}
+              <i className="fas fa-toolbox fa-2x"></i>
+              {/* <i className="fas fa-palette fa-2x"></i> */}
             </span>
           </div>
 
           <div className="bottom-item">
             <span onClick={loggedIn ? logOut : () => router.push('/login')}>
-              <i class="fas fa-cog fa-2x"></i>
+              <i className="fas fa-cog fa-2x"></i>
             </span>
           </div>
           {/* {favorites.map((project, i) => (
