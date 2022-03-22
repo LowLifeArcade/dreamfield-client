@@ -35,6 +35,7 @@ const CreatorIndex = () => {
       console.log('ERROR > FIELDS LOADED IN PAGES/CREATOR ', data);
     }
   };
+  // test
 
   return (
     <CreatorRoute>
