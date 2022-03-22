@@ -123,7 +123,8 @@ const SideBar = ({ onLogoClick, showSideMenu }) => {
   const loadFields = async () => {
     try {
       const { data } = await axios.get(
-        `${process.env.NEXT_PUBLIC_API}/creator-fields`
+        `${process.env.NEXT_PUBLIC_API}/creator-fields`,
+        { withCredentials: true }
       );
       console.log('FIELDS LOADED IN SIDEBAR', data);
       setFields(data);

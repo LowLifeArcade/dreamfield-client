@@ -6,7 +6,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
 import { Context } from '../context';
-import router, {useRouter} from 'next/router'
+import router, { useRouter } from 'next/router';
 
 // TODO: add hide password eye icon and functionality
 // Also add social login button
@@ -17,40 +17,41 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
 
   // context state
-  const {state, dispatch} = useContext(Context)
-  const {user} = state 
+  const { state, dispatch } = useContext(Context);
+  const { user } = state;
 
   useEffect(() => {
-
-    user && router.push('/edit/creator')
-
+    user && router.push('/edit/creator');
   }, [user]);
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('ENV ',process.env.NEXT_PUBLIC_API)
+    console.log('ENV ', process.env.NEXT_PUBLIC_API);
     try {
       setLoading(true);
-      const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API}/login`, {
-        email,
-        password,
-      });
-      await console.log('LOGIN DATA', data)
-      
+      const { data } = await axios.post(
+        `${process.env.NEXT_PUBLIC_API}/login`,
+        {
+          email,
+          password,
+        },
+        { withCredentials: true }
+      );
+      await console.log('LOGIN DATA', data);
+
       // dispatch to context for globale state
       dispatch({
-        type: "LOGIN",
+        type: 'LOGIN',
         payload: data,
-      })
+      });
 
       // save in local storage
-      window.localStorage.setItem('user', JSON.stringify(data))
+      window.localStorage.setItem('user', JSON.stringify(data));
       setLoading(false);
-      setEmail('')
-      setPassword('')
+      setEmail('');
+      setPassword('');
       // redirect
-      router.push('/edit/creator')
+      router.push('/edit/creator');
 
       // toast.warning('Login successfull', {
       //   position: 'bottom-left',
@@ -71,7 +72,7 @@ const Login = () => {
       //   draggable: true,
       //   progress: undefined,
       // });
-      console.log('LOGIN ERROR', err)
+      console.log('LOGIN ERROR', err);
       setLoading(false);
     }
   };
@@ -96,9 +97,8 @@ const Login = () => {
             title="Login"
             imgTitle="Enter The Fields"
             imgSubTitle="If you come, they will build it."
-            img="https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2734&q=80"
-          >
-            <input type="text" name='name'  hidden/>
+            img="https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2734&q=80">
+            <input type="text" name="name" hidden />
             <FormInput
               value={email}
               onChange={setEmail}
@@ -137,7 +137,7 @@ const Login = () => {
             </div>
           </Card>
         </form>
-            {/* .form {
+        {/* .form {
               position: absolute;
               top: 50%;
               left: 50%;
@@ -145,9 +145,8 @@ const Login = () => {
             } */}
         <style jsx>
           {`
-          .form {
-            
-          }
+            .form {
+            }
             .btn {
               margin-top: 14px;
             }
@@ -157,7 +156,7 @@ const Login = () => {
               height: 120vh;
               filter: blur(4px);
             }
-            
+
             .loginlink {
               font-size: 0.8rem;
               margin-top: 15px;

@@ -29,7 +29,8 @@ const Provider = ({ children }) => {
   useEffect(() => {
     const getCsrfToken = async () => {
       const { data } = await axios.get(
-        `${process.env.NEXT_PUBLIC_API}/csrf-token`
+        `${process.env.NEXT_PUBLIC_API}/csrf-token`,
+        { withCredentials: true }
       );
       console.log('CSRF in context', data);
       axios.defaults.headers['X-CSRF-Token'] = data.csrfToken;

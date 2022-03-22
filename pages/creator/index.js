@@ -26,7 +26,8 @@ const CreatorIndex = () => {
   const loadFields = async () => {
     try {
       const { data } = await axios.get(
-        `${process.env.NEXT_PUBLIC_API}/creator-fields`
+        `${process.env.NEXT_PUBLIC_API}/creator-fields`,
+        { withCredentials: true }
       );
       console.log('FIELDS LOADED IN PAGES/CREATOR ', data);
       setFields(data);
