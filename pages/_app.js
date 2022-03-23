@@ -15,15 +15,15 @@ import { useContext } from 'react';
 
 function MyApp({ Component, pageProps }) {
   // I think i put this here so the provider can make requests. Not a good solution.
-  // useEffect(() => {
-  //   const getCsrfToken = async () => {
-  //     const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API}/csrf-token`);
-  //     console.log('CSRF in _app', data.csrfToken);
-  //     axios.defaults.headers['X-CSRF-Token'] = data.csrfToken;
-  //     // axios.defaults.headers['X-CSRF-Token'] = data.getCsrfToken;
-  //   };
-  //   getCsrfToken();
-  // }, []);
+  useEffect(() => {
+    const getCsrfToken = async () => {
+      const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API}/csrf-token`);
+      console.log('CSRF in _app', data.csrfToken);
+      axios.defaults.headers.common['X-CSRF-Token'] = data.csrfToken;
+      // axios.defaults.headers['X-CSRF-Token'] = data.getCsrfToken;
+    };
+    getCsrfToken();
+  }, []);
   console.log('run _app');
   const project = useContext(ProjectContext);
   console.log('PROJECT IN APP', project);
@@ -47,10 +47,9 @@ function MyApp({ Component, pageProps }) {
         <head lang="en" className="notranslate" translate="no">
           {/* <script src="https://kit.fontawesome.com/69aa58689a.js" crossorigin="anonymous"></script> */}
           <meta
-            nameName="google"
+            name="google"
             content="notranslate"
             lang="en"
-            class="notranslate"
             translate="no"
             className="notranslate"
           />

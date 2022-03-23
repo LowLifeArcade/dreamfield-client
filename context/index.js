@@ -32,8 +32,7 @@ const Provider = ({ children }) => {
         `${process.env.NEXT_PUBLIC_API}/csrf-token`,
         { withCredentials: true }
       );
-      console.log('CSRF in context', data);
-      axios.defaults.headers['X-CSRF-Token'] = data.csrfToken;
+      axios.defaults.headers.common['X-CSRF-Token'] = data.csrfToken;
       // axios.defaults.headers['X-CSRF-Token'] = data.getCsrfToken;
     };
     getCsrfToken();
@@ -45,6 +44,18 @@ const Provider = ({ children }) => {
       payload: JSON.parse(window.localStorage.getItem('user')),
     });
   }, []);
+
+  axios.interceptors.request.use(
+    function(config) {
+      // Do something before request is sent
+      config.withCredentials = true;
+      return config;
+    },
+    function(error) {
+      // Do something with request error
+      return Promise.reject(error);
+    }
+  );
 
   // I believe this runs as a middlware between a response and error. So if I get an error logging in it logs me out.
   axios.interceptors.response.use(

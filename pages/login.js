@@ -26,7 +26,6 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('ENV ', process.env.NEXT_PUBLIC_API);
     try {
       setLoading(true);
       const { data } = await axios.post(
@@ -37,7 +36,6 @@ const Login = () => {
         },
         { withCredentials: true }
       );
-      await console.log('LOGIN DATA', data);
 
       // dispatch to context for globale state
       dispatch({
